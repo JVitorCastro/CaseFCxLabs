@@ -1,0 +1,22 @@
+{
+  "name": "casefcxlabs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JVitorCastro/CaseFCxLabs.git"
+  },
+  "author": "J. Vitor Castro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JVitorCastro/CaseFCxLabs/issues"
+  },
+  "homepage": "https://github.com/JVitorCastro/CaseFCxLabs#readme",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.4.0"
+  }
+}
