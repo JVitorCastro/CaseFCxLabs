@@ -17,6 +17,7 @@
   "homepage": "https://github.com/JVitorCastro/CaseFCxLabs#readme",
   "description": "",
   "devDependencies": {
-    "cypress": "^14.4.0"
+    "cypress": "^14.4.0",
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
