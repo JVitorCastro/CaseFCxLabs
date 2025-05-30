@@ -2,6 +2,7 @@ import dados from '../../../fixtures/fecha-pedido.json'
 
 class ComprasPage {
 
+  //Método de acesso a página inicial e validação dos campos
   acessaPaginaInicial(){
     cy.visit('/')
     this.esperarLoader()
@@ -25,6 +26,7 @@ class ComprasPage {
     this.acessaPaginaMice()
   }
 
+  //Método usado para acessar a seção de mouses e suas respectivas validações
   acessaPaginaMice(){
     cy.get('#miceTxt').click()
     this.esperarLoader()
@@ -51,12 +53,18 @@ class ComprasPage {
     cy.get('#checkOutButton').click()
   }
 
+  //Esse método garante que as ações só serão executadas após o desaparecimento do loader
+  //O objetivo é garantir que a tela finalize seu carregamento
   esperarLoader(){
     cy.get('.loader').should('not.be.visible')
   }
 
+  //Esse método esvazia o carrinho CASO tenha algum item
   esvaziaCarrinho(){
     cy.get('#shoppingCartLink').trigger('mouseover')
+    
+    //Esse trecho verificar se há itens no carrinho de compras
+    //Caso true, clica no ícone X para esvaziar o carrinho
     cy.get('#shoppingCartLink span').then(($btn) => {
       if ($btn.is(':visible')) {
         cy.get('.removeProduct').click()
@@ -64,6 +72,7 @@ class ComprasPage {
     })
   }
 
+  //Verifica os campos do frete e valida os dados apresentados
   frete(){
     cy.get('#detailslink label')
       .should('have.length', 2)
@@ -73,6 +82,7 @@ class ComprasPage {
     cy.get('#next_btn').click()
   }
 
+  //Verifica se os dados do cartão são os mesmos cadastrados
   cartao(){
     cy.get('.masterCreditSeccion span')
     .should('have.length', 5)
@@ -81,7 +91,7 @@ class ComprasPage {
       expect($span.get(1).textContent).contains('****')
       expect($span.get(2).textContent).contains('****')
       expect($span.get(3).textContent).contains('****')
-      expect($span.get(4).textContent).contains('1258')
+      expect($span.get(4).textContent).contains(dados.cartao)
     })
     cy.get('#pay_now_btn_MasterCredit').click()
   }
@@ -100,6 +110,7 @@ class ComprasPage {
       expect($span.get(5).textContent).contains('1258')
       expect($span.get(9).textContent).contains(`$${(dados.frete) + (dados.valor * dados.quantidade)}`)
     })
+    cy.get('.innerSeccion label a').eq(1).should('have.text', Cypress.env('date'))
   }
 }
 

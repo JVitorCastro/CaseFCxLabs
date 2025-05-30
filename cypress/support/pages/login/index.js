@@ -2,6 +2,7 @@ import dados from '../../../fixtures/login.json'
 
 class LoginPage {
 
+  //Método com todo o código necessário para logar e suas respectivas validações
   loginSucesso(){
     cy.visit('/')
     this.esperarLoader()
@@ -29,6 +30,8 @@ class LoginPage {
     cy.get('#menuUserLink span').should('have.text', dados.user)
   }
 
+  //Esse método garante que as ações só serão executadas após o desaparecimento do loader
+  //O objetivo é garantir que a tela finalize seu carregamento
   esperarLoader(){
     cy.get('.loader').should('not.be.visible')
   }
