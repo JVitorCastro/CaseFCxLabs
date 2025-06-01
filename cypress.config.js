@@ -9,7 +9,7 @@ module.exports = defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on)
     },
     env: {
-      date: date().format('DD/M/YYYY')
+      date: date().format('D/M/YYYY')
     },
     viewportWidth: 1280,
     viewportHeight: 720,
