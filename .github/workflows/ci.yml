@@ -2,7 +2,7 @@ name: Case FCx Labs
 on:
   push:
   schedule:
-    - cron: '0 * * * *'
+    - cron: master
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04
